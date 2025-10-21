@@ -3,7 +3,6 @@ from datetime import datetime
 import pandas as pd
 import math
 import data_processing as dp
-import matplotlib as plt
 
 app = Flask(__name__)
 df = dp.load_data()
