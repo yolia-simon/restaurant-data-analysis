@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 import math
 
 
@@ -30,6 +31,32 @@ for x in [2022, 2023, 2024]:
 # adding column to dataframe
 grouping['week-labels'] = week_label
 # display(grouping)
+
+#finished creating graph for weekly food consumption here
+
+grouping_2 = data.groupby(['day', 'year', 'category'], as_index=False).size()
+grouping_2.rename(columns={'size': 'order_no'}, inplace=True)
+year1 = grouping_2[grouping_2['year'] == 2022] #sorting by year
+year2 = grouping_2[grouping_2['year'] == 2023]
+year3 = grouping_2[grouping_2['year'] == 2024]
+
+#pivoting data changes the columns to the categories and values to the order number
+def create_bar_chart(group, year):
+  order = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+
+  x = grouping_2[grouping_2['year'] == year]
+  y = x.pivot(index='day', columns='category', values='order_no')
+  y = y.reindex(order)
+  y.plot(kind='bar')
+  plt.title(f'Peak Days for Vegan and Mixed Dishes for {year}')
+  plt.xlabel('Day of the week')
+  plt.ylabel('Number of orders')
+  plt.xticks(rotation=45)
+  plt.tight_layout()
+  return plt.show()
+
+for year in [2022, 2023, 2024]:
+  create_bar_chart(grouping_2, year)
 
 
 
