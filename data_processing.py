@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import math
 
 
-data = pd.read_csv("data/adams_restaurant_data.csv")
+data = pd.read_csv("data/adams_restaurant_data_updated.csv")
 
 no_rows = len(data)
 # print(no_rows)
@@ -58,8 +58,21 @@ def create_bar_chart(group, year):
 for year in [2022, 2023, 2024]:
   create_bar_chart(grouping_2, year)
 
+#finished creating graphs for peak days for vegan vs mixed food here
 
+grouping_3 = data.groupby(['year', 'delivery_company'], as_index=False).size()
+grouping_3.rename(columns={'size': 'order_no'}, inplace=True)
 
+def create_pie_graph(group, year):
+  categories = grouping_3['delivery_company']
+  select = grouping_3[grouping_3['year'] == year]
+  plt.pie(x = select.order_no, autopct='%1.1f%%', shadow=True)
+  plt.legend(labels = select.delivery_company, loc = [0.95,0.35])
+  plt.title(f'Demand distribution across delivery companies for {year}')
+  return plt.show()
+
+for year in [2022, 2023, 2024]:
+  create_pie_graph(grouping_3, year)
 
 # data for 2022
 for week in range(1,53):
