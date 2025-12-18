@@ -37,22 +37,33 @@ grouping.rename(columns={'size': 'order_no'}, inplace=True)
 # print(grouping.head())
 
 week_label = [] # creating new column labels for easier plotting
-for x in [2022, 2023, 2024]:
-  for y in range(1,53):
-    week_no = str(y).zfill(2)
-    label = f'{x}-W{week_no}'
-    week_label.append(label)
-# print(week_label)
-grouping['week-labels'] = week_label # adding column to dataframe
-# display(grouping)
+for year in [22, 23, 24]:
+    for week in range(1, 53):
+        week_label.append(f'{year}-W{str(week).zfill(2)}')
+grouping['week-labels'] = week_label
 
-x_axis = grouping['week-labels']
-y_axis = grouping['order_no']
+# Define colors for each year
+year_colors = {2022: 'blue', 2023: 'green', 2024: 'red'}
 
-# plt.plot(x_axis, y_axis)
-# plt.title('Weekly Food Consumption Patterns', loc='center')
+plt.figure(figsize=(12, 5))
+
+# Plot each year separately
+for year, color in year_colors.items():
+    year_data = grouping[grouping['year'] == year]
+    plt.plot(year_data['week-labels'], year_data['order_no'], color=color, label=str(year))
+
+# plt.title('Weekly Food Consumption Patterns')
 # plt.xlabel('Time')
 # plt.ylabel('Number of orders')
-# plt.grid(axis='x')
-# plt.show()
 
+# # Rotate x-axis labels
+# plt.xticks(rotation=45)
+
+# # Show only every 4th label to reduce clutter
+# plt.gca().set_xticks(grouping['week-labels'][::4])
+
+# # Add a legend for the colors
+# plt.legend(title='Year')
+
+# plt.tight_layout()
+# plt.show()
