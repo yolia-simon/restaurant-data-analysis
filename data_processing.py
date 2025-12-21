@@ -49,5 +49,26 @@ for week in range(1,53):
   data_2024 = data.loc[(data['week'] == week) & (data['year'] == 2024)]
 #print(data_2024)
 
+<<<<<<< Updated upstream
 # converts column to store order dates
 data['date'] = pd.to_datetime(data['date'],  errors='raise', dayfirst=True, cache=True)
+=======
+def total_revenue_per_year():
+
+  return
+
+def total_revenue_all_time():
+  return
+
+def most_ordered_per_year(data, year):
+  filtered_years = data[data['year'] == year]
+  most_ordered = filtered_years['food_item'].value_counts()
+
+# item, count = most_ordered_per_year(data, 2022)     # test code
+# print(f"Most ordered item: {item} ({count} orders)")
+
+  return most_ordered.idxmax(), most_ordered.max()
+
+def most_ordered_all_time():
+  return
+>>>>>>> Stashed changes
