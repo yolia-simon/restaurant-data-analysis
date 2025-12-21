@@ -49,15 +49,20 @@ for week in range(1,53):
   data_2024 = data.loc[(data['week'] == week) & (data['year'] == 2024)]
 #print(data_2024)
 
-<<<<<<< Updated upstream
 # converts column to store order dates
 data['date'] = pd.to_datetime(data['date'],  errors='raise', dayfirst=True, cache=True)
-=======
-def total_revenue_per_year():
 
-  return
+def total_revenue_per_year(data, year):
+  filtered_years = data[data['year'] == year]
+  yearly_revenue = filtered_years['price'].sum()
 
-def total_revenue_all_time():
+  # total = total_revenue_per_year(data, 2022)   #test code
+  # print(f"Revenue: £ {total:.2f}")
+
+  return yearly_revenue
+
+def total_revenue_all_time(data):
+  yearly_revenue = data['price'].sum()
   return
 
 def most_ordered_per_year(data, year):
@@ -67,8 +72,9 @@ def most_ordered_per_year(data, year):
 # item, count = most_ordered_per_year(data, 2022)     # test code
 # print(f"Most ordered item: {item} ({count} orders)")
 
-  return most_ordered.idxmax(), most_ordered.max()
+  return most_ordered.idxmax(), most_ordered.max() # returns name of item and how many times it appears in a year
 
-def most_ordered_all_time():
-  return
->>>>>>> Stashed changes
+def most_ordered_all_time(data):
+  most_ordered = data['food_item'].value_counts()
+  return most_ordered.idxmax(), most_ordered.max() # returns name of item and how many times it appears in total
+
