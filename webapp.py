@@ -7,9 +7,12 @@ import data_processing as dp
 app = Flask(__name__)
 df = dp.load_data()
 
-
 @app.route("/")
 def welcome():
-  return render_template('welcome.html',
+  return render_template('base.html',
                          message= f"Backend is working, last reload at {datetime.now().time()}"
   )
+
+
+if __name__ == '__main__':
+  app.run()

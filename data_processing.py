@@ -96,6 +96,10 @@ try:
     order_per_year = filtered_years.groupby('year').size()
     return order_per_year
 
+  def total_orders_all_time(data):
+    total_orders = data['orders'].size()
+    return total_orders
+
   def total_revenue_per_year(data, year):
     filtered_years = data[data['year'] == year]
     yearly_revenue = filtered_years['price'].sum()
@@ -120,11 +124,5 @@ try:
   # item, count = most_ordered_all_time(data)
   # print(f"Most ordered item: {item} ({count} orders)")
 
-except:
-  raise SystemError(
-        "Something went wrong but idk what lol"
-      )
-else:
-  print('Nothing went wrong yippeee~ <3')
 finally:
   print('The code has run to the end')
