@@ -4,10 +4,29 @@
   <head>
     <meta charset="UTF-8">
     <title>Restaurant Data Analysis Project</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta name="author" content="Yolia Simon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
   <body>
-    <h1>Welcome to my page </h1>
+    <h1>Dashboard </h1>
+
+    <div id='sidebar'>
+
+      <div id='logo'>
+        <img src='{{ url_for('static', filename='logo.png') }}' alt='logo_image_here'>
+      </div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+
+    </div>
+
+    <div></div>
+
 
     <div class="kpi-row">
       kpi rows here [place a div for each card]
