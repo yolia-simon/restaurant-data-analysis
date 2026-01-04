@@ -4,51 +4,95 @@
   <head>
     <meta charset="UTF-8">
     <title>Restaurant Data Analysis Project</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <meta name="author" content="Yolia Simon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="1">
   </head>
 
   <body>
-    <h1>Dashboard </h1>
 
-    <div id='sidebar'>
+    <div class='split sidebar' id='sidebar'>
+      <div class="centered">
 
-      <div id='logo'>
-        <img src='{{ url_for('static', filename='logo.png') }}' alt='logo_image_here'>
+        <div class='logo'>
+          <img src='{{ url_for('static', filename='logo.png') }}' alt='logo_image_here'>
+       </div>
+
+        <br>
+
+        <div class='menu'>
+          <img src='{{ url_for('static', filename='menu.svg') }}' alt='logo_image_here'>
+          <img src='{{ url_for('static', filename='back.svg') }}' alt='logo_image_here'>
+        </div>
+
+        <br><br><br>
+
+        <div class='menu'>
+          <img src='{{ url_for('static', filename='home.svg') }}' alt='logo_image_here'>
+          Dashboard
+        </div>
+
+        <br>
+
+        <div class='menu'>
+          <img src='{{ url_for('static', filename='food-menu.svg') }}' alt='logo_image_here'>
+          Menu Items
+        </div>
+
+        <br>
+
+        <div class='menu'>
+          <img src='{{ url_for('static', filename='report.svg') }}' alt='logo_image_here'>
+          Insight Reports
+        </div>
+
+        <br>
+
+        <div class='menu'>
+          <img src='{{ url_for('static', filename='about.svg') }}' alt='logo_image_here'>
+          About
+        </div>
+
       </div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
 
     </div>
 
-    <div></div>
+    <div class='split mainscreen'>
+
+      <div class='title'>
+        <h1>Dashboard </h1>
+      </div>
+
+      <div class='display'>
+
+        <div class="kpi-row">
+          <div class='kpi'>card 1</div>
+          <div class='kpi'>card 2</div>
+          <div class='kpi'>card 3</div>
+          <div class='kpi'>card 4</div>
+          <div class='kpi'>card 5</div>
+          <div class='kpi'>card 6</div>
+        </div>
+
+        <div id='graph-box'>
+          <div class='box'>
+            left box
+          </div>
+          <div class='box'>
+            right box
+          </div>
+        </div>
+
+        <p>
+          {{message}}
+        </p>
+
+      </div>
 
 
-    <div class="kpi-row">
-      kpi rows here [place a div for each card]
+
     </div>
-
-    <div class="kpi-row">
-      Weekly food consumption patterns Goal: See how many meals are sold per week using a line chart. [time on the x-axis, number of orders on the y-axis]
-    </div>
-
-    <div class="kpi-row">
-      Peak days for vegan and mixed dishes Goal: Compare the demand for vegan vs mixed food on each day of the week. [days of the week on the x-axis, orders on the y-axis]
-    </div>
-
-    <div class="kpi-row">
-      Demand distribution across delivery companies Goal: See which delivery company carries the most orders.
-    </div>
-
-
-
-    <p>
-      {{message}}
-    </p>
 
   </body>
 

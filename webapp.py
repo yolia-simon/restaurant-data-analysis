@@ -17,4 +17,4 @@ def welcome():
 
 
 if __name__ == '__main__':
-  app.run()
+  app.run()   #to run app in debugging mode, type flask --app webapp run --debug in the terminal aftering going up a directpry by typing cd ..
